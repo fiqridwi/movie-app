@@ -1,36 +1,26 @@
 import React, { useState, useEffect } from "react";
+import MovieDetailItem from "./MovieDetailItem";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { isContentEditable } from "@testing-library/user-event/dist/utils";
+import { fetchMovieDetail } from "../actions";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const MovieDetails = () => {
   let params = useParams();
-  const [item, setItem] = useState([]);
+  const movie = useSelector((state) => state.movieDetailReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch(
-        `http://www.omdbapi.com/?apikey=f901f867&i=${params.id}`
-      );
-      const result = await data.json();
-      console.log(result);
-      setItem(result);
-    };
-
-    fetchData();
-  }, []);
+    dispatch(fetchMovieDetail(params.id));
+  }, [params]);
 
   return (
-    <Container className="d-flex mt-5" style={{ textAlign: "center" }}>
-      <div className="details-image">
-        <img src={item.Poster} alt="poster" />
-      </div>
-      <div className="details">
-        <h1>{`${item.Title} (${item.Year})`}</h1>
-        <p>{item.Plot}</p>
-        <p>{item.Actors}</p>
-        <h5>{`${item.imdbRating}/10`}</h5>
-      </div>
+    <Container>
+      {movie.movie &&
+        movie.movie.map((data, i) => {
+          return <MovieDetailItem key={i} data={data} />;
+        })}
     </Container>
   );
 };

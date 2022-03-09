@@ -7,7 +7,7 @@ const MovieItem = ({ data }) => {
     <Link className="link-details" to={data.imdbID}>
       <Card className="m-2">
         <Card.Img variant="top" src={data.Poster} />
-        <Card.Body>
+        <Card.Body style={{ backgroundColor: "red", color: "white" }}>
           <Card.Title style={{ textAlign: "center" }}>{data.Title}</Card.Title>
         </Card.Body>
       </Card>

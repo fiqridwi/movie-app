@@ -1,5 +1,4 @@
 import "./App.css";
-
 import Header from "./components/Header";
 import Movie from "./components/Movie";
 import MovieDetails from "./components/MovieDetails";

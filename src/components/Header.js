@@ -4,9 +4,11 @@ import Search from "./Search";
 
 const Header = ({ title, search, setSearch }) => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar style={{ backgroundColor: "red" }}>
       <Container>
-        <Navbar.Brand href="/">{title}</Navbar.Brand>
+        <Navbar.Brand style={{ color: "white", fontWeight: "bolder" }} href="/">
+          {title}
+        </Navbar.Brand>
         <Search search={search} setSearch={setSearch} />
       </Container>
     </Navbar>
