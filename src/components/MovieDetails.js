@@ -13,7 +13,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     dispatch(fetchMovieDetail(params.id));
-  }, [params]);
+  }, [dispatch, params.id]);
 
   return (
     <Container>

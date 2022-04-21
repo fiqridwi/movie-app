@@ -12,7 +12,7 @@ const Movie = () => {
 
   useEffect(() => {
     dispatch(fetchMovieSearch(search.search[0]));
-  }, [search]);
+  }, [dispatch, search.search]);
 
   return (
     <div>

@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Header title="FinProH8" />
+      <Header title="MovieApp" />
       <Routes>
         <Route path="/" element={<Movie />} />
         <Route path="/:id" element={<MovieDetails />} />
